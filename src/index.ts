@@ -1,10 +1,11 @@
-import { groqService } from "./services";
+import { groqService, openRouterService } from "./services";
 import type { AIService, ChatMessage } from "./const";
 import { cerebrasService } from "./services/cerebras";
 
 const services: AIService[] = [
   groqService,
   cerebrasService,
+  openRouterService,
 ];
 
 let currentServiceIndex = 0;
@@ -17,6 +18,7 @@ function getNextService() {
 
 const server = Bun.serve({
   port: 3000,
+  idleTimeout: 30,
 
 
   async fetch(request) {
