@@ -5,4 +5,4 @@ const server = Bun.serve({
   },
 });
 
-console.log(`Servidor corriendo en http://localhost:${server.port}`);
+console.log(`Servidor corriendo en ${server.url}`);
